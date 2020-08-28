@@ -95,7 +95,7 @@ function game() {
         computerSelection = computerPlay();
         console.log(`Computer selected ${computerSelection}`);
         totalScore = playRound(playerSelection, computerSelection);
-        console.log(score);
+        console.log(totalScore);
         keepScore();
     }
     checkWinner();
