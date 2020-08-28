@@ -1,87 +1,11 @@
-<script>
-    const choices = ["Rock", "Paper", "Scissors"];
-    const playerSelection = prompt("Choose Rock, Paper or Scissors").toLowerCase();
-    console.log(playerSelection);
-    const computerSelection = computerPlay();
-    var playerScore;
-    var computerScore;
-    var score;
-    
-    function computerPlay() {
-        const computerSelection = choices[Math.floor(Math.random()* choices.length)].toLowerCase();
-        console.log(computerSelection);
-        return computerSelection;
-    }
-// Evaluate winner if playerSelection == computerSelection it is a tie no score       added
-//    if rock and paper, paper wins
-//     if rock and scissors, rock wins
-//     if paper and scissors, scissors wins
-
-   function playRound(playerSelection, computerSelection) {
-       console.log("if start")
-       if (playerSelection === "rock") {
-           console.log("switch start")
-           switch(computerSelection) {
-               case "rock": 
-                console.log("Tie!")
-                break;
-               case "paper":
-                console.log("Computer wins!")
-                break;
-               case "scissors":
-                console.log("Player wins!")
-                
-           } else if (playerSelection === "paper") {
-               console.log("switch start") 
-               switch(computerSelection) {
-                case "rock": 
-                console.log("Player wins!")
-                break;
-               case "paper":
-                console.log("Tie!")
-                break;
-               case "scissors":
-                console.log("Computer wins!!")
-                
-               } else if (playerSelection === "scissors") {
-                   console.log("switch start")
-                   switch(computerSelection) {
-                   case "rock": 
-                   console.log("Computer wins!")
-                   break;
-                   case "paper":
-                   console.log("Player wins!")
-                   break;
-                   case "scissors":
-                   console.log("Tie!!")
-                   
-                   }
-               } else {
-                   console.log("done")
-               }
-           }
-       }
-   }
-
-   playRound(playerSelection, computerSelection);
-
-
-
-
-</script>
-
-
-<!-- 
-   They're will be a constant named Choices of object type with value of array[rock,paper,scissors]
-   They're will be a variable named playerSelection of object type value from browser prompt
-   They're will be a variable named computerSelection of object type with a function named computerPlay that randomly selects one of three const
-   
-   playerSelection and computerSelection will evaluate the winner
-   
-    Keep score of who wins playerScore and computerScore
-    Repeat for 5 rounds
-    Report winner
-
-
-
- -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="script.js"></script>
+</body>
+</html>
