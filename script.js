@@ -3,7 +3,7 @@ var playerSelection
 var computerSelection
 var playerScore = 0;
 var computerScore = 0;
-var score;
+var totalScore;
 
 
 
@@ -62,9 +62,9 @@ function playRound(playerSelection, computerSelection) {
 // Keep track of score
 
 function keepScore() {
-     if ( score === "Player wins this round!") {
+     if ( totalScore === "Player wins this round!") {
             playerScore ++;
-        } else if (score === "Computer wins this round!") {
+        } else if (totalScore === "Computer wins this round!") {
             computerScore ++;
         } else {
             playerScore = playerScore;
@@ -94,7 +94,7 @@ function game() {
         console.log(`Player selected ${playerSelection}`);
         computerSelection = computerPlay();
         console.log(`Computer selected ${computerSelection}`);
-        score = playRound(playerSelection, computerSelection);
+        totalScore = playRound(playerSelection, computerSelection);
         console.log(score);
         keepScore();
     }
