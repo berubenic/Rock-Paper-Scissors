@@ -1,5 +1,5 @@
 This will be a Rock, Paper, Scissors game.
 
-Script will be in the html file for now. 
+Simple game with very basic UI.
 
-Will revisit later to make front-end.
+UI will be updated in the future.
