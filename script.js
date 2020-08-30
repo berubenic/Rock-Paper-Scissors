@@ -1,125 +1,150 @@
 const choices = ["Rock", "Paper", "Scissors"];
-var playerSelection
-var computerSelection
+var playerSelection;
+var computerSelection;
 var playerScore = 0;
 var computerScore = 0;
 var totalScore;
+var roundWinner;
 
+// get buttons from html
 
+const rockBtn = document.querySelector("#rock-btn");
+const paperBtn = document.querySelector("#paper-btn");
+const scissorBtn = document.querySelector("#scissor-btn");
 
-// Randomly choose for computer
-    
+// listen for button click
+// computer chooses on click
+
+rockBtn.addEventListener("click", (e) => {
+  playerSelection = "rock";
+  computerPlay();
+});
+
+paperBtn.addEventListener("click", (e) => {
+  playerSelection = "paper";
+  computerPlay();
+});
+scissorBtn.addEventListener("click", (e) => {
+  playerSelection = "scissor";
+  computerPlay();
+});
+
+// randomly choose for computer
+
 function computerPlay() {
-    const computerSelection = choices[Math.floor(Math.random()* choices.length)].toLowerCase();
-    return computerSelection;
+  computerSelection = choices[
+    Math.floor(Math.random() * choices.length)
+  ].toLowerCase();
+  playRound();
 }
 
+// evaluate computer vs player
+// return winner
 
+function playRound() {
+  if (playerSelection === "rock") {
+    switch (computerSelection) {
+      case "rock":
+        roundWinner = "tie";
+        keepScore();
+        break;
+      case "paper":
+        roundWinner = "computer";
+        keepScore();
+        break;
+      case "scissors":
+        roundWinner = "player";
+        keepScore();
+    }
+  } else if (playerSelection === "paper") {
+    switch (computerSelection) {
+      case "rock":
+        roundWinner = "player";
+        keepScore();
+        break;
+      case "paper":
+        roundWinner = "tie";
+        keepScore();
+        break;
+      case "scissors":
+        roundWinner = "computer";
+        keepScore();
+    }
+  } else {
+    switch (computerSelection) {
+      case "rock":
+        roundWinner = "computer";
+        keepScore();
+        break;
+      case "paper":
+        roundWinner = "player";
+        keepScore();
+        break;
+      case "scissors":
+        roundWinner = "tie";
+        keepScore();
+    }
+  }
+}
 
-// Evaluate winner if playerSelection == computerSelection it is a tie no score       added
-//    if rock and paper, paper wins
-//     if rock and scissors, rock wins
-//     if paper and scissors, scissors wins
+// DOM manipulation to display score
 
-function playRound(playerSelection, computerSelection) {
-    if (playerSelection === "rock") {
-        switch(computerSelection) {
-            case "rock": 
-             return "This round is a tie!"
-             break;
-            case "paper":
-             return "Computer wins this round!"
-             break;
-            case "scissors":
-             return "Player wins this round!"
-          } 
-     } else if (playerSelection === "paper") {
-         switch(computerSelection) {
-             case "rock": 
-             return "Player wins this round!"
-             break;
-             case "paper":
-             return "This round is a tie!"
-             break;
-             case "scissors":
-             return "Computer wins this round!"
-            }
-         } else {
-                switch(computerSelection) {
-                case "rock": 
-                return "Computer wins this round!"
-                break;
-                case "paper":
-                return "Player wins this round!"
-                break;
-                case "scissors":
-                return "This round is a tie!"
-                }
-            }
-        
-};
+const playerDisplay = document.querySelector(".player-score");
+playerDisplay.textContent = "0";
+
+const computerDisplay = document.querySelector(".computer-score");
+computerDisplay.textContent = "0";
+
+// DOM manipulation to display winner
+
+const winnerDisplay = document.querySelector(".display-winner");
 
 // Keep track of score
 
 function keepScore() {
-     if ( totalScore === "Player wins this round!") {
-            playerScore ++;
-        } else if (totalScore === "Computer wins this round!") {
-            computerScore ++;
-        } else {
-            playerScore = playerScore;
-            computerScore = computerScore;
-        }
-        console.log(`Player's score is ${playerScore}`);
-        console.log(`Computer's score is ${computerScore}`);
-};
- 
-// Chech who has most points
+  if (roundWinner === "player") {
+    playerScore++;
+    playerDisplay.textContent = playerScore;
+    checkWinner();
+  } else if (roundWinner === "computer") {
+    computerScore++;
+    computerDisplay.textContent = computerScore;
+    checkWinner();
+  }
+}
+
+// Check who has most points
 
 function checkWinner() {
-        if (playerScore < computerScore) {
-        console.log("Computer wins the match!");
-    } else if (playerScore > computerScore) {
-        console.log("Player wins the match!");
-    } else {
-        console.log("The match is a tie...")
-    }
-};
+  if (playerScore == 5) {
+    winnerDisplay.textContent = "Player won the match!";
+  } else if (computerScore == 5) {
+    winnerDisplay.textContent = "Computer won the match!";
+  }
+}
 
 // Loop through game 5 times
 
-function game() {
-    for (let i = 1; i <= 5; i++) {
-        playerSelection = prompt("Choose Rock, Paper or Scissors").toLowerCase();
-        console.log(`Player selected ${playerSelection}`);
-        computerSelection = computerPlay();
-        console.log(`Computer selected ${computerSelection}`);
-        totalScore = playRound(playerSelection, computerSelection);
-        console.log(totalScore);
-        keepScore();
-    }
-    checkWinner();
-};
-
-game();
-
-
-
-
-
-
-
+// function game() {
+//   {
+//     // playerSelection = prompt("Choose Rock, Paper or Scissors").toLowerCase();
+//     console.log(`Player selected ${playerSelection}`);
+//     computerSelection = computerSelection();
+//     console.log(`Computer selected ${computerSelection}`);
+//     totalScore = playRound(playerSelection, computerSelection);
+//     console.log(totalScore);
+//     keepScore();
+//   }
+//   checkWinner();
+// }
 
 //    ----first pseudoCode draft----
 //    They're will be a constant named Choices of object type with value of array[rock,paper,scissors]
 //    They're will be a variable named playerSelection of object type value from browser prompt
 //    They're will be a variable named computerSelection of object type with a function named computerPlay that randomly selects one of three const
-   
+
 //    playerSelection and computerSelection will evaluate the winner
-   
+
 //     Keep score of who wins playerScore and computerScore
 //     Repeat for 5 rounds
 //     Report winner
-
-
-
