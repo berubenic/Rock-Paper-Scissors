@@ -110,17 +110,29 @@ function keepScore() {
     computerScore++;
     computerDisplay.textContent = computerScore;
     checkWinner();
+  } else if (roundWinner === "tie") {
+    winnerDisplay.textContent = "Tie!";
   }
 }
 
 // Check who has most points
 
 function checkWinner() {
+  winnerDisplay.textContent = "";
   if (playerScore == 5) {
-    winnerDisplay.textContent = "Player won the match!";
+    winnerDisplay.textContent = "You win!";
+    disablePlayButtons();
   } else if (computerScore == 5) {
-    winnerDisplay.textContent = "Computer won the match!";
+    winnerDisplay.textContent = "Computer wins!";
+    disablePlayButtons();
   }
+}
+
+function disablePlayButtons() {
+  console.log("disable");
+  rockBtn.disabled = true;
+  paperBtn.disabled = true;
+  scissorBtn.disabled = true;
 }
 
 // Loop through game 5 times

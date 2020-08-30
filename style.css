@@ -1,0 +1,116 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 2em 30em;
+  background-color: rgb(247, 243, 243);
+}
+
+main {
+  text-align: center;
+  margin: 0 auto;
+  padding: 0 2em;
+  display: grid;
+  grid-gap: 1em;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-areas:
+    "... ... title title title ... ..."
+    "... ... rock-icon paper-icon scissor-icon ... ..."
+    "... ... ... ... ... ... ..."
+    "player player ... display... computer computer"
+    "player player ... display ...computer computer"
+    "... ... ... ... ... ... ..."
+    "... ... rock paper scissor ... ...";
+}
+.rock-icon {
+  grid-area: rock-icon;
+}
+.paper-icon {
+  grid-area: paper-icon;
+}
+.scissor-icon {
+  grid-area: scissor-icon;
+}
+.title {
+  grid-area: title;
+  background-color: #1a6685;
+  color: white;
+  border-radius: 0.6em;
+  padding-top: 1em;
+  font-size: 2.6em;
+  padding-bottom: 1em;
+}
+.side {
+  background-color: #1a6685;
+  color: white;
+  border-radius: 0.6em;
+  margin-bottom: 2em;
+}
+.player-side {
+  grid-area: player;
+}
+.display-winner {
+  grid-area: display;
+  background-color: #1a6685;
+  color: white;
+  padding: 1em;
+  padding-top: 1.6em;
+  margin-bottom: 1.2em;
+  font-size: 1.6em;
+  border-radius: 0.6em;
+  width: auto;
+}
+.computer-side {
+  grid-area: computer;
+}
+button {
+  padding: 0 1em;
+  background-color: #f10;
+  color: black;
+  height: 2.6em;
+  font-size: 1.2em;
+  border-radius: 0.6em;
+}
+button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.rock-btn {
+  grid-area: rock;
+}
+.paper-btn {
+  grid-area: paper;
+}
+.scissor-btn {
+  grid-area: scissor;
+}
+.score {
+  font-size: 2em;
+}
+
+@media (max-width: 1700px) {
+  body {
+    margin: 2em 15em;
+  }
+}
+
+@media (max-width: 1200px) {
+  body {
+    margin: 2em 1em;
+  }
+}
+
+@media (max-width: 650px) {
+  main {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "title title title"
+      "rock-icon paper-icon scissor-icon"
+      "... ... ..."
+      "player display computer"
+      "player display computer"
+      "... ... ..."
+      "... rock ..."
+      "... paper ..."
+      "... scissor ...";
+  }
+}
