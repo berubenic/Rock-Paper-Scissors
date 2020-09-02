@@ -129,7 +129,6 @@ function checkWinner() {
 }
 
 function disablePlayButtons() {
-  console.log("disable");
   rockBtn.disabled = true;
   paperBtn.disabled = true;
   scissorBtn.disabled = true;
